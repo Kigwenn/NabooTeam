@@ -8,9 +8,9 @@
 -- Table: Salle
 ------------------------------------------------------------
 CREATE TABLE public.Salle(
-	sal_id   SERIAL NOT NULL ,
-	sal_nom  VARCHAR (25)  ,
-	Capacite INT   ,
+	sal_id       SERIAL NOT NULL ,
+	sal_nom      VARCHAR (25)  ,
+	sal_capacite INT   ,
 	CONSTRAINT prk_constraint_Salle PRIMARY KEY (sal_id)
 )WITHOUT OIDS;
 
@@ -49,10 +49,9 @@ CREATE TABLE public.Membres(
 	mem_entree       DATE   ,
 	mem_date__sortie DATE   ,
 	mem_date_entree  DATE   ,
-	mem_login        VARCHAR (25)  ,
-	mem.pw           VARCHAR (25)  ,
 	mem_actif        BOOL   ,
 	pro_id           INT   ,
+	com_id           INT   ,
 	CONSTRAINT prk_constraint_Membres PRIMARY KEY (mem_id)
 )WITHOUT OIDS;
 
@@ -115,12 +114,25 @@ CREATE TABLE public.Matiere(
 
 
 ------------------------------------------------------------
--- Table: Proposer
+-- Table: Comptes
 ------------------------------------------------------------
-CREATE TABLE public.Proposer(
+CREATE TABLE public.Comptes(
+	com_id    SERIAL NOT NULL ,
+	com_login VARCHAR (25)  ,
+	com_pw    VARCHAR (25)  ,
+	dro_id    INT   ,
+	CONSTRAINT prk_constraint_Comptes PRIMARY KEY (com_id)
+)WITHOUT OIDS;
+
+
+------------------------------------------------------------
+-- Table: Poceder
+------------------------------------------------------------
+CREATE TABLE public.Poceder(
 	cam_id INT  NOT NULL ,
 	for_id INT  NOT NULL ,
-	CONSTRAINT prk_constraint_Proposer PRIMARY KEY (cam_id,for_id)
+	mem_id INT  NOT NULL ,
+	CONSTRAINT prk_constraint_Poceder PRIMARY KEY (cam_id,for_id,mem_id)
 )WITHOUT OIDS;
 
 
@@ -131,16 +143,6 @@ CREATE TABLE public.Equiper(
 	sal_id INT  NOT NULL ,
 	equ_id INT  NOT NULL ,
 	CONSTRAINT prk_constraint_Equiper PRIMARY KEY (sal_id,equ_id)
-)WITHOUT OIDS;
-
-
-------------------------------------------------------------
--- Table: Pouvoir
-------------------------------------------------------------
-CREATE TABLE public.Pouvoir(
-	mem_id INT  NOT NULL ,
-	dro_id INT  NOT NULL ,
-	CONSTRAINT prk_constraint_Pouvoir PRIMARY KEY (mem_id,dro_id)
 )WITHOUT OIDS;
 
 
@@ -177,24 +179,15 @@ CREATE TABLE public.Constituer(
 )WITHOUT OIDS;
 
 
-------------------------------------------------------------
--- Table: Creer
-------------------------------------------------------------
-CREATE TABLE public.Creer(
-	for_id INT  NOT NULL ,
-	pro_id INT  NOT NULL ,
-	CONSTRAINT prk_constraint_Creer PRIMARY KEY (for_id,pro_id)
-)WITHOUT OIDS;
-
-
 
 ALTER TABLE public.Membres ADD CONSTRAINT FK_Membres_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
-ALTER TABLE public.Proposer ADD CONSTRAINT FK_Proposer_cam_id FOREIGN KEY (cam_id) REFERENCES public.Campus(cam_id);
-ALTER TABLE public.Proposer ADD CONSTRAINT FK_Proposer_for_id FOREIGN KEY (for_id) REFERENCES public.Formations(for_id);
+ALTER TABLE public.Membres ADD CONSTRAINT FK_Membres_com_id FOREIGN KEY (com_id) REFERENCES public.Comptes(com_id);
+ALTER TABLE public.Comptes ADD CONSTRAINT FK_Comptes_dro_id FOREIGN KEY (dro_id) REFERENCES public.Droits(dro_id);
+ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_cam_id FOREIGN KEY (cam_id) REFERENCES public.Campus(cam_id);
+ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_for_id FOREIGN KEY (for_id) REFERENCES public.Formations(for_id);
+ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_mem_id FOREIGN KEY (mem_id) REFERENCES public.Membres(mem_id);
 ALTER TABLE public.Equiper ADD CONSTRAINT FK_Equiper_sal_id FOREIGN KEY (sal_id) REFERENCES public.Salle(sal_id);
 ALTER TABLE public.Equiper ADD CONSTRAINT FK_Equiper_equ_id FOREIGN KEY (equ_id) REFERENCES public.Equipements(equ_id);
-ALTER TABLE public.Pouvoir ADD CONSTRAINT FK_Pouvoir_mem_id FOREIGN KEY (mem_id) REFERENCES public.Membres(mem_id);
-ALTER TABLE public.Pouvoir ADD CONSTRAINT FK_Pouvoir_dro_id FOREIGN KEY (dro_id) REFERENCES public.Droits(dro_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_sal_id FOREIGN KEY (sal_id) REFERENCES public.Salle(sal_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_cou_id FOREIGN KEY (cou_id) REFERENCES public.Cours(cou_id);
@@ -203,5 +196,3 @@ ALTER TABLE public.Enseigner ADD CONSTRAINT FK_Enseigner_mat_id FOREIGN KEY (mat
 ALTER TABLE public.Constituer ADD CONSTRAINT FK_Constituer_cou_id FOREIGN KEY (cou_id) REFERENCES public.Cours(cou_id);
 ALTER TABLE public.Constituer ADD CONSTRAINT FK_Constituer_mat_id FOREIGN KEY (mat_id) REFERENCES public.Matiere(mat_id);
 ALTER TABLE public.Constituer ADD CONSTRAINT FK_Constituer_mem_id FOREIGN KEY (mem_id) REFERENCES public.Membres(mem_id);
-ALTER TABLE public.Creer ADD CONSTRAINT FK_Creer_for_id FOREIGN KEY (for_id) REFERENCES public.Formations(for_id);
-ALTER TABLE public.Creer ADD CONSTRAINT FK_Creer_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
