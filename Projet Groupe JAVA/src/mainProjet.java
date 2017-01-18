@@ -11,10 +11,13 @@ public class mainProjet {
 			System.out.println("La connexion Ã  la BDD a Ã©chouÃ© ! Aurevoir !");
 		}
 	}
-			
+	public static void menuPrincipal() {
+		Scanner sc = new Scanner(System.in);
+		int choix;
+		do {	
 
 
-<<<<<<< HEAD
+
 					System.out.println("");
 		            System.out.println("           ┌────────────────────────────────────┐");
 		            System.out.println("           │        Projet Planning IMIE        │");
@@ -29,7 +32,7 @@ public class mainProjet {
 		            System.out.println("           │  3 - Quitter                       │");
 		            System.out.println("           │                                    │");            
 		            System.out.println("           └────────────────────────────────────┘");
-=======
+
 			System.out.println("");
 			System.out.println("           ┌────────────────────────────────────┐");
 			System.out.println("           │        Projet Planning IMIE        │");
