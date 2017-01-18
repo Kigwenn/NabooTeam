@@ -1,6 +1,7 @@
 package Planning;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
@@ -35,7 +36,7 @@ public abstract class FenetreDeBase extends JFrame {
 		fichier.setFont(font2);
 		barreMenus.add(fichier);
 		
-//		AJOUTER UN IF POUR AJOUTER LE BOUTON EDITION UNIQUEMENT AUX ADMINISTRATEURS
+
 		JMenu edition = new JMenu("Edition");
 		edition.setFont(font2);
 		barreMenus.add(edition);
@@ -58,16 +59,6 @@ public abstract class FenetreDeBase extends JFrame {
 		administration.setFont(font2);
 		edition.add(administration);
 		
-		JPanel pan1 = new JPanel();
-		pan1.setLayout(new BorderLayout(10, 10));
-		this.setContentPane(pan1);
-		
-		JPanel pan2 = new JPanel();
-		pan1.add(pan2, BorderLayout.SOUTH);
-		JButton retour = new JButton("Retour");
-		retour.setFont(font2);
-		retour.setPreferredSize(new Dimension(200, 60));
-		pan2.add(retour);
 		
 		
 		
