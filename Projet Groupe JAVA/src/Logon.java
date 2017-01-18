@@ -1,19 +1,18 @@
 
 public abstract class Logon {
 
-//==== Attributs ================================================
+//───── Attributs ────────────────────────────────────────────────
 	
 	protected int id;
 	protected String login;
 
-//==== Constructeurs ============================================	
-
-	
-	
+//───── Constructeurs ────────────────────────────────────────────	
+		
 	public Logon(){ 
 	}
 
-//==== get /set =================================================
+//───── Getter / Setter ──────────────────────────────────────────
+	
 	public int getId() {
 		return id;
 	}
