@@ -8,7 +8,7 @@ public class mainProjet {
 			menuPrincipal();
 		}	
 		else{
-			System.out.println("La connexion à la BDD a échoué ! Aurevoir !");
+			System.out.println("La connexion Ã  la BDD a Ã©chouÃ© ! Aurevoir !");
 		}
 	}
 			
@@ -19,19 +19,19 @@ public class mainProjet {
 				do {	
 
 					System.out.println("");
-					System.out.println("           ┌────────────────────────────────────┐");
-					System.out.println("           │        Projet Planning IMIE        │");
-					System.out.println("           ├───                               ──┤");
-					System.out.println("           │            MENU PRINCIPAL          │");
-					System.out.println("           ├──────                        ──────┤");
-					System.out.println("           │                                    │");			
-					System.out.println("           │  1 - Connexion                     │");
-					System.out.println("           │                                    │");
-					System.out.println("           │  2 - Création d'un nouveau compte  │");
-					System.out.println("           │                                    │");
-					System.out.println("           │  3 - Quitter                       │");
-					System.out.println("           │                                    │");			
-					System.out.println("           └────────────────────────────────────┘");
+		            System.out.println("           ┌────────────────────────────────────┐");
+		            System.out.println("           │        Projet Planning IMIE        │");
+		            System.out.println("           ├───                               ──┤");
+		            System.out.println("           │            MENU PRINCIPAL          │");
+		            System.out.println("           ├──────                        ──────┤");
+		            System.out.println("           │                                    │");            
+		            System.out.println("           │  1 - Connexion                     │");
+		            System.out.println("           │                                    │");
+		            System.out.println("           │  2 - Création d'un nouveau compte  │");
+		            System.out.println("           │                                    │");
+		            System.out.println("           │  3 - Quitter                       │");
+		            System.out.println("           │                                    │");            
+		            System.out.println("           └────────────────────────────────────┘");
 
 					choix = menuEntrer(4, "\n                   Choisir une option : ");
 					System.out.println("");
