@@ -4,20 +4,29 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 
-public class User {
+public abstract class Membres_copie {
 
-//==== Attributs ================================================
+//───── Attributs ────────────────────────────────────────────────
+		
+	protected int idMembres;
+	protected String nom;
+	protected String prenom;
+	protected String adresse;
+	protected int cp;
+	protected String ville;
+	protected MaDate dateEntree;
+	protected MaDate dateSortie;
+	protected boolean Actvif;
 		
 	private String login ;
 	private String pw ;	
 	
-//==== Constructeurs ============================================
+//───── Constructeurs ────────────────────────────────────────────
 	
-	public User() {
-	//	identification();
+	public Membres_copie() {
 	}
 	
-//==== Methodes =================================================
+//───── Methodes ─────────────────────────────────────────────────
 	
 	public void identification(){
 		Scanner sc = new Scanner(System.in);
@@ -44,10 +53,37 @@ public class User {
 	}
 	
 	
-	public boolean check(){
+	public boolean check() {
 		
-		String query ="SELECT mem_login,mem_id FROM membres WHERE login = ?";
-		String query2 ="SELECT mem_login, mem_id, mem_pw FROM membres WHERE login = ? AND pw = ?";
+		String query = "SELECT * FROM membres WHERE mem_nom=? AND mem_prenom=?";
+
+		
+		try {
+			PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			prepare.setString(1, nom);
+			prepare.setString(2, prenom);
+			
+			ResultSet result = prepare.executeQuery();
+				
+			//───── Utilisateur identifié ─────────────────────────────────────────────────
+				
+			if(result.first())	{
+				System.out.println("\n L'utilisateur est deja connue !\n");
+				return false;
+			}
+		} 
+		
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	
+	public boolean checkConnection(){
+		
+		String query ="SELECT com_login, com_id FROM comptes WHERE com_login = ?";
+		String query2 ="SELECT com_login, com_id, com_pw FROM comptes WHERE com_login = ? AND com_pw = ?";
 	
 		try{
 			//utilisation de PreparedStatement pour l'utilisation de trou dans les query on peut lire le resultat dans les 2 senses les changements ne seront
@@ -69,10 +105,11 @@ public class User {
 					System.out.println("\nIdentification OK...\n");
 					
 					//On remplit nos attibuts
-					int id = result2.getInt("id_compte");
+					int id = result2.getInt("com_id");
 					
-					if(result2.getString("login") != null){
-						login = result2.getString("login");
+					if(result2.getString("com_login") != null){
+						login = result2.getString("com_login");
+					//	System.out.println(login);
 						return true;	
 					}	
 							
@@ -99,7 +136,7 @@ public class User {
 	public boolean newCompte() {
 		
 		boolean	res = false;
-		String query = "INSERT INTO comptes (com_login, com_pw) VALUES (?,?) RETURNING com_id;";
+		String query = "INSERT INTO comptes (com_login, com_pw, dro_id) VALUES (?,?,4) RETURNING com_id;";
 				
 		try {
 			PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -122,12 +159,11 @@ public class User {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return res;
 	}
 
 	
-//==== get /set =================================================
+//───── Getter / Setter ──────────────────────────────────────────
 				
 	public String getLogin() {
 		return login;

@@ -46,11 +46,9 @@ CREATE TABLE public.Membres(
 	mem_adresse      VARCHAR (25)  ,
 	mem_ville        VARCHAR (25)  ,
 	mem_cp           INT   ,
-	mem_entree       DATE   ,
-	mem_date__sortie DATE   ,
 	mem_date_entree  DATE   ,
+	mem_date__sortie DATE  NOT NULL ,
 	mem_actif        BOOL   ,
-	pro_id           INT   ,
 	com_id           INT   ,
 	CONSTRAINT prk_constraint_Membres PRIMARY KEY (mem_id)
 )WITHOUT OIDS;
@@ -85,8 +83,12 @@ CREATE TABLE public.Campus(
 -- Table: Droits
 ------------------------------------------------------------
 CREATE TABLE public.Droits(
-	dro_id  SERIAL NOT NULL ,
-	dro_nom VARCHAR (25)  ,
+	dro_id      SERIAL NOT NULL ,
+	dro_nom     VARCHAR (25)  ,
+	dro_pg      BOOL  NOT NULL ,
+	dro_pp      BOOL  NOT NULL ,
+	dro_perso   BOOL   ,
+	dro_gestion BOOL   ,
 	CONSTRAINT prk_constraint_Droits PRIMARY KEY (dro_id)
 )WITHOUT OIDS;
 
@@ -126,13 +128,13 @@ CREATE TABLE public.Comptes(
 
 
 ------------------------------------------------------------
--- Table: Poceder
+-- Table: Posseder
 ------------------------------------------------------------
-CREATE TABLE public.Poceder(
+CREATE TABLE public.Posseder(
 	cam_id INT  NOT NULL ,
 	for_id INT  NOT NULL ,
-	mem_id INT  NOT NULL ,
-	CONSTRAINT prk_constraint_Poceder PRIMARY KEY (cam_id,for_id,mem_id)
+	pro_id INT  NOT NULL ,
+	CONSTRAINT prk_constraint_Posseder PRIMARY KEY (cam_id,for_id,pro_id)
 )WITHOUT OIDS;
 
 
@@ -140,9 +142,20 @@ CREATE TABLE public.Poceder(
 -- Table: Equiper
 ------------------------------------------------------------
 CREATE TABLE public.Equiper(
-	sal_id INT  NOT NULL ,
-	equ_id INT  NOT NULL ,
+	equ_qte INT   ,
+	sal_id  INT  NOT NULL ,
+	equ_id  INT  NOT NULL ,
 	CONSTRAINT prk_constraint_Equiper PRIMARY KEY (sal_id,equ_id)
+)WITHOUT OIDS;
+
+
+------------------------------------------------------------
+-- Table: Affecter
+------------------------------------------------------------
+CREATE TABLE public.Affecter(
+	mem_id INT  NOT NULL ,
+	pro_id INT  NOT NULL ,
+	CONSTRAINT prk_constraint_Affecter PRIMARY KEY (mem_id,pro_id)
 )WITHOUT OIDS;
 
 
@@ -180,14 +193,15 @@ CREATE TABLE public.Constituer(
 
 
 
-ALTER TABLE public.Membres ADD CONSTRAINT FK_Membres_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
 ALTER TABLE public.Membres ADD CONSTRAINT FK_Membres_com_id FOREIGN KEY (com_id) REFERENCES public.Comptes(com_id);
 ALTER TABLE public.Comptes ADD CONSTRAINT FK_Comptes_dro_id FOREIGN KEY (dro_id) REFERENCES public.Droits(dro_id);
-ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_cam_id FOREIGN KEY (cam_id) REFERENCES public.Campus(cam_id);
-ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_for_id FOREIGN KEY (for_id) REFERENCES public.Formations(for_id);
-ALTER TABLE public.Poceder ADD CONSTRAINT FK_Poceder_mem_id FOREIGN KEY (mem_id) REFERENCES public.Membres(mem_id);
+ALTER TABLE public.Posseder ADD CONSTRAINT FK_Posseder_cam_id FOREIGN KEY (cam_id) REFERENCES public.Campus(cam_id);
+ALTER TABLE public.Posseder ADD CONSTRAINT FK_Posseder_for_id FOREIGN KEY (for_id) REFERENCES public.Formations(for_id);
+ALTER TABLE public.Posseder ADD CONSTRAINT FK_Posseder_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
 ALTER TABLE public.Equiper ADD CONSTRAINT FK_Equiper_sal_id FOREIGN KEY (sal_id) REFERENCES public.Salle(sal_id);
 ALTER TABLE public.Equiper ADD CONSTRAINT FK_Equiper_equ_id FOREIGN KEY (equ_id) REFERENCES public.Equipements(equ_id);
+ALTER TABLE public.Affecter ADD CONSTRAINT FK_Affecter_mem_id FOREIGN KEY (mem_id) REFERENCES public.Membres(mem_id);
+ALTER TABLE public.Affecter ADD CONSTRAINT FK_Affecter_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_pro_id FOREIGN KEY (pro_id) REFERENCES public.Promo(pro_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_sal_id FOREIGN KEY (sal_id) REFERENCES public.Salle(sal_id);
 ALTER TABLE public.Reserver ADD CONSTRAINT FK_Reserver_cou_id FOREIGN KEY (cou_id) REFERENCES public.Cours(cou_id);
