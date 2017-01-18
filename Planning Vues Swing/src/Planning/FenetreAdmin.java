@@ -11,26 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
-public class FenetreAdmin extends JFrame {
+public class FenetreAdmin extends FenetreDeBase {
 
 	Font font = new Font("Arial",Font.BOLD,40);
 	Font font2 = new Font("Arial",Font.BOLD,25);
 	Font font3 = new Font("Arial",Font.BOLD,50);
 	Font font4 = new Font("Arial",Font.BOLD,35);
 	
-	public FenetreAdmin() throws HeadlessException {
-	}
-
 	public FenetreAdmin(GraphicsConfiguration arg0) {
 		super(arg0);
 	}
 
-	public FenetreAdmin(String a) throws HeadlessException {
-		this.setTitle(a);
+	public FenetreAdmin() throws HeadlessException {
+		this.setTitle("Admin");
 
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+				
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 		
@@ -56,8 +51,18 @@ public class FenetreAdmin extends JFrame {
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
 		
-		
-		
+		JButton gestionMembre = new JButton("Gestion membre");
+		gestionMembre.setFont(font2);
+		pan2.add(gestionMembre);
+		JButton gestionPlanning = new JButton("Gestion planning");
+		gestionPlanning.setFont(font2);
+		pan3.add(gestionPlanning);
+		JButton gestionSalle = new JButton("Gestion Salle");
+		gestionMembre.setFont(font2);
+		pan2.add(gestionMembre);
+		JButton gestionPlanning = new JButton("Gestion planning");
+		gestionPlanning.setFont(font2);
+		pan3.add(gestionPlanning);
 		
 		
 		

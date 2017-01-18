@@ -19,22 +19,23 @@ public abstract class FenetreDeBase extends JFrame {
 	Font font3 = new Font("Arial",Font.BOLD,50);
 	Font font4 = new Font("Arial",Font.BOLD,35);
 	
-	public FenetreDeBase() throws HeadlessException {
-	}
-
 	public FenetreDeBase(GraphicsConfiguration arg0) {
 		super(arg0);
 	}
 
-	public FenetreDeBase(String a) throws HeadlessException {
+	public FenetreDeBase() throws HeadlessException {
 		this.setSize(1700, 1000);
-		
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
+			
 		JMenu fichier = new JMenu("Fichier");
 		fichier.setFont(font2);
 		barreMenus.add(fichier);
+		
+//		AJOUTER UN IF POUR AJOUTER LE BOUTON EDITION UNIQUEMENT AUX ADMINISTRATEURS
 		JMenu edition = new JMenu("Edition");
 		edition.setFont(font2);
 		barreMenus.add(edition);

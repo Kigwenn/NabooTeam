@@ -137,9 +137,9 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 		pan4.add(labelTitre);
 
 		this.setVisible(true);
-
 	}
 
+	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 		FenetreConnexion fen = new FenetreConnexion("Login", 1);

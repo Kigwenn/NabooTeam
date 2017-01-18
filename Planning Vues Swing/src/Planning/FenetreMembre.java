@@ -22,20 +22,15 @@ public class FenetreMembre extends FenetreDeBase {
 	}
 
 	public FenetreMembre(String a) throws HeadlessException {
-		
+	
 		this.setTitle("Membre");
 		
 		
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 		
-		JMenuBar barreMenus = new JMenuBar();
-		setJMenuBar(barreMenus);
-		
-		JButton deconnexion = new JButton("Déconnexion");
-		deconnexion.setFont(font2);
-		barreMenus.add(deconnexion);
+//		JMenuBar barreMenus = new JMenuBar();
+//		setJMenuBar(barreMenus);
 		
 		JPanel pan1 = new JPanel();
 		pan1.setLayout(new BorderLayout(10, 10));
