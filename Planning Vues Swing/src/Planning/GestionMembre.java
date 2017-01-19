@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class GestionMembre extends FenetreDeBase implements MouseListener {
 
@@ -63,7 +65,23 @@ public class GestionMembre extends FenetreDeBase implements MouseListener {
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
 		
-//		JTable tableau = new JTable();
+		String[] columnNames = {"Salle",
+                "Nom de Promotion",
+                "Formateur",
+                "Cours",
+                "Date"};
+		
+		Object[][] data = {
+			    {"Naboo", "JMQ DL",
+			     "Johan", "Java", "du 16/01/2017 au 20/01/2017"},
+			   
+			};
+		
+		JTable table = new JTable(data, columnNames);
+		JScrollPane scrollpane = new JScrollPane(table);
+		
+		
+		pan2.add(table, BorderLayout.CENTER);
 		
 		
 		this.setVisible(true);

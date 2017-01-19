@@ -1,6 +1,7 @@
 package Planning;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -17,27 +18,59 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class GestionPlanning extends FenetreDeBase implements MouseListener {
+public class VuePlanningJour extends FenetreDeBase implements MouseListener {
 
-	public GestionPlanning() {
+	public VuePlanningJour() {
 		this.setTitle("Gestion du planning");
 
 
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 
+		
+		
+		
+		
+		
+		
+		
+		JMenu fichier = new JMenu("Fichier");
+		fichier.setFont(font2);
+		barreMenus.add(fichier);
+		JMenu edition = new JMenu("Edition");
+		edition.setFont(font2);
+		barreMenus.add(edition);
+		JMenu vue = new JMenu("Vue");
+		vue.setFont(font2);
+		barreMenus.add(vue);
+		
+		JButton vueSemaine = new JButton(" Vue semaine ");
+		vueSemaine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VuePlanning planning = new VuePlanning();
+				}
+			}
+		);
+		vueSemaine.setFont(font2);
+		
+		vue.add(vueSemaine);
+		JButton administration = new JButton("Administration");
+		administration.setFont(font2);
+		edition.add(administration);
 		JButton deconnexion = new JButton("Déconnexion");
 		deconnexion.setFont(font2);
-		barreMenus.add(deconnexion);
-		
-		JButton menu = new JButton("Menu");
+		fichier.add(deconnexion);
+		JPanel pan1 = new JPanel();
+		pan1.setBackground(Color.gray);
+		pan1.setLayout(new BorderLayout(10, 10));
+		this.setContentPane(pan1);
+		JButton menu = new JButton("       Menu      ");
 		menu.setFont(font2);
-		barreMenus.add(menu);
 		menu.addMouseListener(this);
-		
-		JButton quitter = new JButton("Quitter");
+		fichier.add(menu);
+		JButton quitter = new JButton("      Quitter     ");
 		quitter.setFont(font2);
-		barreMenus.add(quitter);
+		fichier.add(quitter);
 		quitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane jop;
@@ -50,48 +83,23 @@ public class GestionPlanning extends FenetreDeBase implements MouseListener {
 			}
 		});
 		
-		JMenu fichier = new JMenu("Fichier");
-		fichier.setFont(font2);
-		barreMenus.add(fichier);
-		JMenu edition = new JMenu("Edition");
-		edition.setFont(font2);
-		barreMenus.add(edition);
-		JMenu vue = new JMenu("Vue");
-		vue.setFont(font2);
-		barreMenus.add(vue);
-		JButton vueJour = new JButton("     Vue jour    ");
-		vueJour.setFont(font2);
-		JButton vueSemaine = new JButton(" Vue semaine ");
-		vueSemaine.setFont(font2);
-		vue.add(vueJour);
-		vue.add(vueSemaine);
-		JButton administration = new JButton("Administration");
-		administration.setFont(font2);
-		edition.add(administration);
-
-		JPanel pan1 = new JPanel();
-		pan1.setLayout(new BorderLayout(10, 10));
-		this.setContentPane(pan1);
-
 		JPanel pan2 = new JPanel();
-		pan1.add(pan2, BorderLayout.SOUTH);
-
-
-		JPanel pan3 = new JPanel();
-		pan1.add(pan3);
-
-		JPanel pan4 = new JPanel();
-		pan2.add(pan4, BorderLayout.CENTER);
+		pan1.add(pan2);
+		pan1.setBackground(Color.blue);
 		JLabel messageAccueil = new JLabel();
-		messageAccueil.setText("Bienvenue sur la gestion du planning de l'IMIE. Enjoy!");
+		messageAccueil.setText("Bienvenue sur le planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
+
+	
+		
+		
+		
 		
 		String[] columnNames = {"Salle",
                 "Nom de Promotion",
                 "Formateur",
-                "Cours",
-                "Date"};
+                "Cours"};
 		
 		Object[][] data = {
 			    {"Naboo", "JMQ DL",
@@ -103,18 +111,16 @@ public class GestionPlanning extends FenetreDeBase implements MouseListener {
 		JScrollPane scrollpane = new JScrollPane(table);
 		
 		
-		pan3.add(table, BorderLayout.CENTER);
+		pan2.add(table, BorderLayout.CENTER);
 		
-		JButton valider = new JButton("Valider");
-		valider.setFont(font2);
-		pan2.add(valider);
+		
 		this.setVisible(true);
 	}
 
 	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
-		FenetreAdmin fen = new FenetreAdmin();
+		FenetreMembre fen = new FenetreMembre();
 	}
 
 	

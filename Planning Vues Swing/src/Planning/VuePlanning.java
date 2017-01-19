@@ -1,6 +1,7 @@
 package Planning;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class VuePlanning extends FenetreDeBase implements MouseListener {
 
@@ -41,11 +44,15 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		vue.setFont(font2);
 		barreMenus.add(vue);
 		JButton vueJour = new JButton("     Vue jour    ");
+		vueJour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VuePlanningJour vue = new VuePlanningJour();
+				}
+			}
+		);
 		vueJour.setFont(font2);
-		JButton vueSemaine = new JButton(" Vue semaine ");
-		vueSemaine.setFont(font2);
+		
 		vue.add(vueJour);
-		vue.add(vueSemaine);
 		JButton administration = new JButton("Administration");
 		administration.setFont(font2);
 		edition.add(administration);
@@ -53,6 +60,7 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		deconnexion.setFont(font2);
 		fichier.add(deconnexion);
 		JPanel pan1 = new JPanel();
+		pan1.setBackground(Color.gray);
 		pan1.setLayout(new BorderLayout(10, 10));
 		this.setContentPane(pan1);
 		JButton menu = new JButton("       Menu      ");
@@ -75,20 +83,35 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		});
 		
 		JPanel pan2 = new JPanel();
-		pan1.add(pan2, BorderLayout.SOUTH);
-
-
-		JPanel pan3 = new JPanel();
-		pan2.add(pan3, BorderLayout.NORTH);
-
-		JPanel pan4 = new JPanel();
-		pan2.add(pan4, BorderLayout.CENTER);
+		pan1.add(pan2);
+		pan1.setBackground(Color.blue);
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur le planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
+
+	
 		
-//		JTable tableau = new JTable();
+		
+		
+		
+		String[] columnNames = {"Salle",
+                "Nom de Promotion",
+                "Formateur",
+                "Cours",
+                "Date"};
+		
+		Object[][] data = {
+			    {"Naboo", "JMQ DL",
+			     "Johan", "Java", "du 16/01/2017 au 20/01/2017"},
+			   
+			};
+		
+		JTable table = new JTable(data, columnNames);
+		JScrollPane scrollpane = new JScrollPane(table);
+		
+		
+		pan2.add(table, BorderLayout.CENTER);
 		
 		
 		this.setVisible(true);

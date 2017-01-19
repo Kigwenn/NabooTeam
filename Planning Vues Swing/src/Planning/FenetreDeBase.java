@@ -28,7 +28,7 @@ public abstract class FenetreDeBase extends JFrame {
 	}
 
 	public FenetreDeBase() throws HeadlessException {
-		this.setSize(1700, 1000);
+		this.setSize(1500, 800);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
