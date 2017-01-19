@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
@@ -23,14 +22,9 @@ public class FenetreAdmin extends FenetreDeBase implements MouseListener{
 	Font font3 = new Font("Arial",Font.BOLD,50);
 	Font font4 = new Font("Arial",Font.BOLD,35);
 	
-	public FenetreAdmin(GraphicsConfiguration arg0) {
-		super(arg0);
-	}
-
 	public FenetreAdmin() throws HeadlessException {
 		this.setTitle("Admin");
 
-				
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 		
@@ -58,13 +52,7 @@ public class FenetreAdmin extends FenetreDeBase implements MouseListener{
 		
 		JPanel pan2 = new JPanel();
 		pan1.add(pan2, BorderLayout.SOUTH);
-		
-		
-		JPanel pan3 = new JPanel();
-		pan2.add(pan3, BorderLayout.NORTH);
-		
-		JPanel pan4 = new JPanel();
-		pan2.add(pan4, BorderLayout.CENTER);
+
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur le menu du planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
@@ -89,18 +77,16 @@ public class FenetreAdmin extends FenetreDeBase implements MouseListener{
 				}
 			}
 		);
-		pan3.add(gestionPlanning);
-		JButton gestionSalle = new JButton("Gestion Salle");
-		gestionSalle.setFont(font2);
-		pan2.add(gestionSalle);
-		gestionSalle.addMouseListener(this);
-		JButton gestionEquipement = new JButton("Gestion Equipement");
-		gestionEquipement.setFont(font2);
-		pan3.add(gestionEquipement);
-		gestionEquipement.addMouseListener(this);
+		pan2.add(gestionPlanning);
 		
-		
-		
+//		JButton gestionSalle = new JButton("Gestion Salle");
+//		gestionSalle.setFont(font2);
+//		pan2.add(gestionSalle);
+//		gestionSalle.addMouseListener(this);
+//		JButton gestionEquipement = new JButton("Gestion Equipement");
+//		gestionEquipement.setFont(font2);
+//		pan3.add(gestionEquipement);
+//		gestionEquipement.addMouseListener(this);
 		
 		this.setVisible(true);
 	}
@@ -109,24 +95,19 @@ public class FenetreAdmin extends FenetreDeBase implements MouseListener{
 		super(arg0, arg1);
 	}
 
-	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 	}
 
-	
 	public void mouseEntered(MouseEvent arg0) {
 	}
 
-	
 	public void mouseExited(MouseEvent arg0) {
 	}
 
-	
 	public void mousePressed(MouseEvent arg0) {
 	}
 
-	
 	public void mouseReleased(MouseEvent arg0) {
 	}
 

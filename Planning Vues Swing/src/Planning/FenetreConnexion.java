@@ -32,7 +32,6 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 	Font font3 = new Font("Arial",Font.BOLD,50);
 	Font font4 = new Font("Arial",Font.BOLD,35);
 
-
 	public FenetreConnexion(String a) {	
 		this.setTitle(a);
 		this.setSize(600, 400);
@@ -90,8 +89,6 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 		pan1.setLayout(new BorderLayout());
 		this.setContentPane(pan1);
 
-
-
 		JPanel pan2 = new JPanel();
 		labelIdentifiant.setFont(font2);
 		pan2.add(labelIdentifiant);	
@@ -142,7 +139,6 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 
 		this.setVisible(true);
 	}
-
 
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);

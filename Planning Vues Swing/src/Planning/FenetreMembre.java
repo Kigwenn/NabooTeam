@@ -1,9 +1,7 @@
 package Planning;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
@@ -26,10 +23,6 @@ public class FenetreMembre extends FenetreDeBase implements MouseListener{
 	
 	public FenetreMembre() throws HeadlessException {
 		this.setTitle("Membre");
-		
-		
-		
-
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 		
@@ -58,7 +51,6 @@ public class FenetreMembre extends FenetreDeBase implements MouseListener{
 		JPanel pan2 = new JPanel();
 		pan1.add(pan2, BorderLayout.SOUTH);
 
-		
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur le menu du planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
@@ -81,28 +73,22 @@ public class FenetreMembre extends FenetreDeBase implements MouseListener{
 			}
 		);
 		
-		
 		this.setVisible(true);
 	}
 
-	
 	public void mouseClicked(MouseEvent e) {
 		this.setVisible(false);
 	}
 
-	
 	public void mouseEntered(MouseEvent e) {
 	}
 
-	
 	public void mouseExited(MouseEvent e) {
 	}
 
-	
 	public void mousePressed(MouseEvent e) {
 	}
 
-	
 	public void mouseReleased(MouseEvent e) {
 	}
 }

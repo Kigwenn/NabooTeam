@@ -1,8 +1,6 @@
 package Planning;
 
 import java.awt.BorderLayout;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -54,26 +52,20 @@ public class GestionMembre extends FenetreDeBase implements MouseListener {
 		JPanel pan2 = new JPanel();
 		pan1.add(pan2, BorderLayout.SOUTH);
 
-
-		JPanel pan3 = new JPanel();
-		pan2.add(pan3, BorderLayout.NORTH);
-
-		JPanel pan4 = new JPanel();
-		pan2.add(pan4, BorderLayout.CENTER);
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur la gestion des membres de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
 		
-		String[] columnNames = {"Salle",
-                "Nom de Promotion",
-                "Formateur",
-                "Cours",
-                "Date"};
+		String[] columnNames = {"Nom",
+                "Prenom",
+                "Formation",
+                "E-Mail",
+                "Telephone"};
 		
 		Object[][] data = {
-			    {"Naboo", "JMQ DL",
-			     "Johan", "Java", "du 16/01/2017 au 20/01/2017"},
+			    {"xxx", "JMQ DL",
+			     "xxx", "Java", "du 16/01/2017 au 20/01/2017"},
 			   
 			};
 		
@@ -81,31 +73,26 @@ public class GestionMembre extends FenetreDeBase implements MouseListener {
 		JScrollPane scrollpane = new JScrollPane(table);
 		
 		
-		pan2.add(table, BorderLayout.CENTER);
+		pan1.add(table, BorderLayout.CENTER);
 		
 		
 		this.setVisible(true);
 	}
 
-	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 		FenetreAdmin fen = new FenetreAdmin();
 	}
 
-	
 	public void mouseEntered(MouseEvent arg0) {
 	}
 
-	
 	public void mouseExited(MouseEvent arg0) {
 	}
 
-	
 	public void mousePressed(MouseEvent arg0) {
 	}
 
-	
 	public void mouseReleased(MouseEvent arg0) {
 	}
 }

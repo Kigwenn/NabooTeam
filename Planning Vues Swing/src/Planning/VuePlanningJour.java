@@ -2,8 +2,6 @@ package Planning;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -23,17 +21,8 @@ public class VuePlanningJour extends FenetreDeBase implements MouseListener {
 	public VuePlanningJour() {
 		this.setTitle("Gestion du planning");
 
-
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
-
-		
-		
-		
-		
-		
-		
-		
 		JMenu fichier = new JMenu("Fichier");
 		fichier.setFont(font2);
 		barreMenus.add(fichier);
@@ -71,6 +60,7 @@ public class VuePlanningJour extends FenetreDeBase implements MouseListener {
 		JButton quitter = new JButton("      Quitter     ");
 		quitter.setFont(font2);
 		fichier.add(quitter);
+		
 		quitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane jop;
@@ -90,11 +80,6 @@ public class VuePlanningJour extends FenetreDeBase implements MouseListener {
 		messageAccueil.setText("Bienvenue sur le planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
-
-	
-		
-		
-		
 		
 		String[] columnNames = {"Salle",
                 "Nom de Promotion",
@@ -110,32 +95,25 @@ public class VuePlanningJour extends FenetreDeBase implements MouseListener {
 		JTable table = new JTable(data, columnNames);
 		JScrollPane scrollpane = new JScrollPane(table);
 		
-		
 		pan2.add(table, BorderLayout.CENTER);
-		
 		
 		this.setVisible(true);
 	}
 
-	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 		FenetreMembre fen = new FenetreMembre();
 	}
 
-	
 	public void mouseEntered(MouseEvent arg0) {
 	}
 
-	
 	public void mouseExited(MouseEvent arg0) {
 	}
 
-	
 	public void mousePressed(MouseEvent arg0) {
 	}
 
-	
 	public void mouseReleased(MouseEvent arg0) {
 	}
 }

@@ -2,8 +2,6 @@ package Planning;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -23,17 +21,9 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 	public VuePlanning() {
 		this.setTitle("Gestion du planning");
 
-
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 
-		
-		
-		
-		
-		
-		
-		
 		JMenu fichier = new JMenu("Fichier");
 		fichier.setFont(font2);
 		barreMenus.add(fichier);
@@ -43,6 +33,7 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		JMenu vue = new JMenu("Vue");
 		vue.setFont(font2);
 		barreMenus.add(vue);
+		
 		JButton vueJour = new JButton("     Vue jour    ");
 		vueJour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,7 +42,6 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 			}
 		);
 		vueJour.setFont(font2);
-		
 		vue.add(vueJour);
 		JButton administration = new JButton("Administration");
 		administration.setFont(font2);
@@ -90,11 +80,6 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		messageAccueil.setFont(font4);
 		pan1.add(messageAccueil, BorderLayout.NORTH);
 
-	
-		
-		
-		
-		
 		String[] columnNames = {"Salle",
                 "Nom de Promotion",
                 "Formateur",
@@ -109,33 +94,25 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		
 		JTable table = new JTable(data, columnNames);
 		JScrollPane scrollpane = new JScrollPane(table);
-		
-		
 		pan2.add(table, BorderLayout.CENTER);
-		
 		
 		this.setVisible(true);
 	}
 
-	
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 		FenetreMembre fen = new FenetreMembre();
 	}
 
-	
 	public void mouseEntered(MouseEvent arg0) {
 	}
 
-	
 	public void mouseExited(MouseEvent arg0) {
 	}
 
-	
 	public void mousePressed(MouseEvent arg0) {
 	}
 
-	
 	public void mouseReleased(MouseEvent arg0) {
 	}
 }
