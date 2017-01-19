@@ -50,7 +50,6 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		deconnexion.setFont(font2);
 		fichier.add(deconnexion);
 		JPanel pan1 = new JPanel();
-		pan1.setBackground(Color.gray);
 		pan1.setLayout(new BorderLayout(10, 10));
 		this.setContentPane(pan1);
 		JButton menu = new JButton("       Menu      ");
@@ -74,7 +73,6 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		
 		JPanel pan2 = new JPanel();
 		pan1.add(pan2);
-		pan1.setBackground(Color.blue);
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur le planning de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
@@ -94,7 +92,7 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		
 		JTable table = new JTable(data, columnNames);
 		JScrollPane scrollpane = new JScrollPane(table);
-		pan2.add(table, BorderLayout.CENTER);
+		pan1.add(table, BorderLayout.CENTER);
 		
 		this.setVisible(true);
 	}

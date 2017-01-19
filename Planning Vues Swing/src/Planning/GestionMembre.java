@@ -49,9 +49,6 @@ public class GestionMembre extends FenetreDeBase implements MouseListener {
 		pan1.setLayout(new BorderLayout(10, 10));
 		this.setContentPane(pan1);
 
-		JPanel pan2 = new JPanel();
-		pan1.add(pan2, BorderLayout.SOUTH);
-
 		JLabel messageAccueil = new JLabel();
 		messageAccueil.setText("Bienvenue sur la gestion des membres de l'IMIE. Enjoy!");
 		messageAccueil.setFont(font4);
@@ -72,6 +69,10 @@ public class GestionMembre extends FenetreDeBase implements MouseListener {
 		JTable table = new JTable(data, columnNames);
 		JScrollPane scrollpane = new JScrollPane(table);
 		
+		JButton valider = new JButton("Valider");
+		valider.setFont(font2);
+		pan1.add(valider, BorderLayout.SOUTH);
+		this.setVisible(true);
 		
 		pan1.add(table, BorderLayout.CENTER);
 		
