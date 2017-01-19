@@ -34,45 +34,6 @@ public abstract class FenetreDeBase extends JFrame {
 		
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
-//		JButton deconnexion = new JButton("Déconnexion");
-//		deconnexion.setFont(font2);
-//		barreMenus.add(deconnexion);
-//		JButton quitter = new JButton("Quitter");
-//		quitter.setFont(font2);
-//		barreMenus.add(quitter);
-//		quitter.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				JOptionPane jop;
-//				int retour;
-//				jop = new JOptionPane();
-//				retour = JOptionPane.showConfirmDialog(null, "Voulez-vous vraiment quitter?", "Quitter?", JOptionPane.YES_NO_OPTION);
-//				if(retour == JOptionPane.YES_NO_OPTION){
-//					System.exit(0);
-//				}
-//			}
-//		});
-//			
-//		JMenu fichier = new JMenu("Fichier");
-//		fichier.setFont(font2);
-//		barreMenus.add(fichier);
-//		JMenu edition = new JMenu("Edition");
-//		edition.setFont(font2);
-//		barreMenus.add(edition);
-//		JMenu vue = new JMenu("Vue");
-//		vue.setFont(font2);
-//		barreMenus.add(vue);
-//		JButton vueJour = new JButton("     Vue jour    ");
-//		vueJour.setFont(font2);
-//		JButton vueSemaine = new JButton(" Vue semaine ");
-//		vueSemaine.setFont(font2);
-//		vue.add(vueJour);
-//		vue.add(vueSemaine);
-//		JButton administration = new JButton("Administration");
-//		administration.setFont(font2);
-//		edition.add(administration);
-		
-		
-		
 		
 		this.setVisible(true);
 	}
