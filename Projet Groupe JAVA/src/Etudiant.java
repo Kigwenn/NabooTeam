@@ -8,7 +8,7 @@ public class Etudiant extends Membres {
 	//───── Attributs ────────────────────────────────────────────────
 	
 		protected String adresse;
-		protected int cp;
+		protected String cp;
 		protected String ville;
 		protected MaDate dateEntree;
 		protected MaDate dateSortie;
@@ -20,6 +20,7 @@ public class Etudiant extends Membres {
 		super(nom, prenom, tel, login, pw);
 		this.droits = 4 ;
 		this.actif = true;
+		System.out.println("Un humain est né !");
 		}
 		
 		public Etudiant(){
@@ -43,11 +44,11 @@ public class Etudiant extends Membres {
 			System.out.print("\t\t    Nom : ");
 			nom = sc.nextLine();
 			System.out.print("\n\t\t    Prenom : ");
-			nom = sc.nextLine();
+			prenom = sc.nextLine();
 			System.out.print("\n\t\t    adresse : ");
 			adresse = sc.nextLine();
 			System.out.print("\n\t\t    code postal : ");
-			cp = sc.nextInt();
+			cp = sc.nextLine();
 			System.out.print("\n\t\t    ville : ");
 			ville = sc.nextLine();
 			System.out.print("\n\t\t    Tel : ");
@@ -80,12 +81,12 @@ public class Etudiant extends Membres {
 				}
 				
 				try {
-					String query2 = "INSERT INTO membres (mem_nom, mem_prenom, mem_adresse, mem_cp, mem_ville, mem_tel, com_id) VALUES (?,?,?,"+com_id+") RETURNING mem_id;";
+					String query2 = "INSERT INTO membres (mem_nom, mem_prenom, mem_adresse, mem_cp, mem_ville, mem_tel, com_id) VALUES (?,?,?,?,?,?,"+com_id+") RETURNING mem_id;";
 					PreparedStatement prepare2 = LinkBdd.getInstance().prepareStatement(query2, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 					prepare2.setString(1, nom);
 					prepare2.setString(2, prenom);
 					prepare2.setString(3, adresse);
-					prepare2.setInt(4, cp);
+					prepare2.setString(4, cp);
 					prepare2.setString(5, ville);
 					prepare2.setString(6, tel);
 					ResultSet result2 = prepare2.executeQuery();
@@ -112,11 +113,11 @@ public class Etudiant extends Membres {
 			this.adresse = adresse;
 		}
 
-		public int getCp() {
+		public String getCp() {
 			return cp;
 		}
 
-		public void setCp(int cp) {
+		public void setCp(String cp) {
 			this.cp = cp;
 		}
 

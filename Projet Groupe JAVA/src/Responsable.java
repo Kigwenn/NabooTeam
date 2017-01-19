@@ -15,7 +15,7 @@ public class Responsable extends Membres{
 			super (nom, prenom, tel, login, pw);
 			this.droits = 2 ;
 			this.actif = true;
-			System.out.println("Un moine est né !");
+			System.out.println("Un 1/2 dieu est né !");
 			System.out.println("");
 		}
 			
@@ -76,7 +76,7 @@ public class Responsable extends Membres{
 					prepare2.setString(2, prenom);
 					prepare2.setString(3, tel);
 					ResultSet result2 = prepare2.executeQuery();
-					System.out.println("Un dieu est né !");
+					System.out.println("Un 1/2 dieu est né !");
 					System.out.println("");
 					res = true;
 				}

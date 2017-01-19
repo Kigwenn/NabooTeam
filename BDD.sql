@@ -46,6 +46,7 @@ CREATE TABLE public.Membres(
 	mem_adresse      VARCHAR (25)  ,
 	mem_ville        VARCHAR (25)  ,
 	mem_cp           INT   ,
+	mem_tel          VARCHAR (14)  ,
 	mem_date_entree  DATE   ,
 	mem_date__sortie DATE  NOT NULL ,
 	mem_actif        BOOL   ,
