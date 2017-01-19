@@ -107,8 +107,12 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 		pan2.add(boutonValider);
 		boutonValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-
+//				if(){
+					FenetreAdmin fen = new FenetreAdmin();
+//				}
+//				else{
+					FenetreMembre fen2 = new FenetreMembre();
+//				}
 			}
 		}
 				);
@@ -139,7 +143,7 @@ public class FenetreConnexion extends JFrame implements MouseListener{
 		this.setVisible(true);
 	}
 
-	
+
 	public void mouseClicked(MouseEvent arg0) {
 		this.setVisible(false);
 		FenetreConnexion fen = new FenetreConnexion("Login", 1);

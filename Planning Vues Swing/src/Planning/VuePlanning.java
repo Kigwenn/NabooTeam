@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,18 +24,44 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 		JMenuBar barreMenus = new JMenuBar();
 		setJMenuBar(barreMenus);
 
+		
+		
+		
+		
+		
+		
+		
+		JMenu fichier = new JMenu("Fichier");
+		fichier.setFont(font2);
+		barreMenus.add(fichier);
+		JMenu edition = new JMenu("Edition");
+		edition.setFont(font2);
+		barreMenus.add(edition);
+		JMenu vue = new JMenu("Vue");
+		vue.setFont(font2);
+		barreMenus.add(vue);
+		JButton vueJour = new JButton("     Vue jour    ");
+		vueJour.setFont(font2);
+		JButton vueSemaine = new JButton(" Vue semaine ");
+		vueSemaine.setFont(font2);
+		vue.add(vueJour);
+		vue.add(vueSemaine);
+		JButton administration = new JButton("Administration");
+		administration.setFont(font2);
+		edition.add(administration);
 		JButton deconnexion = new JButton("Déconnexion");
 		deconnexion.setFont(font2);
-		barreMenus.add(deconnexion);
-		
-		JButton menu = new JButton("Menu");
+		fichier.add(deconnexion);
+		JPanel pan1 = new JPanel();
+		pan1.setLayout(new BorderLayout(10, 10));
+		this.setContentPane(pan1);
+		JButton menu = new JButton("       Menu      ");
 		menu.setFont(font2);
-		barreMenus.add(menu);
 		menu.addMouseListener(this);
-		
-		JButton quitter = new JButton("Quitter");
+		fichier.add(menu);
+		JButton quitter = new JButton("      Quitter     ");
 		quitter.setFont(font2);
-		barreMenus.add(quitter);
+		fichier.add(quitter);
 		quitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane jop;
@@ -46,11 +73,7 @@ public class VuePlanning extends FenetreDeBase implements MouseListener {
 				}
 			}
 		});
-
-		JPanel pan1 = new JPanel();
-		pan1.setLayout(new BorderLayout(10, 10));
-		this.setContentPane(pan1);
-
+		
 		JPanel pan2 = new JPanel();
 		pan1.add(pan2, BorderLayout.SOUTH);
 
