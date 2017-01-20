@@ -7,37 +7,37 @@ import java.util.Scanner;
 public class Promos {
 //───── Attributs ────────────────────────────────────────────────
 	
-	private String nom;
-	private int capacite;
-	private String description;
+	protected String nom;
+	protected int capacite;
+	protected String description;
+	protected int com_id = 0; 
+	protected int dro_id = 0; 
 	
 //───── Constructeurs ────────────────────────────────────────────
 	
 	public Promos() {
-		newPromo();
-		createPromo();
 	}
 	
+	public Promos(int a, int b){
+	}
 //───── Methodes ─────────────────────────────────────────────────
-	
-	public void newPromo(){
-		Scanner sc = new Scanner(System.in);
-		System.out.println("");
-		System.out.println("\t\t  ┌──────────────────────┐");
-		System.out.println("\t\t  │        Promos        │");
-		System.out.println("\t\t  └──────────────────────┘\n");
-		System.out.print("\t\t  Nom de la promo : ");
-		nom = sc.nextLine();
-		System.out.print("\n\t\t  Capacité : ");
-		capacite = sc.nextInt();
-		sc.nextLine();
-		System.out.print("\n\t\t  Descriptions : ");
-		description = sc.nextLine();
-	}
 	
 	public boolean createPromo(){
 	boolean	res = false;
-		
+	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("");
+	System.out.println("\t\t  ┌────────────────────────────┐");
+	System.out.println("\t\t  │      Nouvelle  Promos      │");
+	System.out.println("\t\t  └────────────────────────────┘\n");
+	System.out.print("\t\t  Nom de la promo : ");
+	nom = sc.nextLine();
+	System.out.print("\n\t\t  Capacité : ");
+	capacite = sc.nextInt();
+	sc.nextLine();
+	System.out.print("\n\t\t  Descriptions : ");
+	description = sc.nextLine();
+	
 	String query = "INSERT INTO promo (pro_nom, pro_nb, pro_description) VALUES (?,?,?) RETURNING pro_id;";
 				
 		try {
@@ -59,6 +59,75 @@ public class Promos {
 			e.printStackTrace();
 		}
 		return res;
+	}
+	
+	public boolean listePromos(){
+		    
+	    String query = "SELECT pro_id, pro_nom, pro_nb, pro_description";
+	    query +=" FROM promo";
+	        			    
+	    int i=0;
+	    try {
+	    	PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
+	    	prepare.execute();
+			ResultSet result = prepare.getResultSet();
+		    //ResultSet result = state.executeQuery(query);
+			    
+		    System.out.println("         ┌───────┬───────────────┬───────┬───────────────┐" );
+		    System.out.println("         │ id    │ Nom		 │ Cap.  │ Description	 │" );
+		    System.out.println("┌────────┼───────┼───────────────┼───────┼───────────────┘" );
+		    
+		    while(result.next()) {
+			    i+=1;
+			    System.out.print("│ "+i+"\t │  "+result.getString("pro_id"));	
+			    System.out.print("\t │  "+result.getString("pro_nom")+"\t │   "+result.getString("pro_nb"));
+			    System.out.println("\t │  "+result.getString("pro_description")+"\t ");
+			}
+		    
+		    System.out.println("└────────┴───────┴───────────────┴───────┘" );
+		    
+	    }
+	    
+	    catch (SQLException e) {
+			e.printStackTrace();
+	    }
+	   
+	    return true;
+	}
+	
+	public boolean supprPromos(){
+		
+		boolean	res = false;
+		
+	    Scanner sc = new Scanner(System.in);
+		System.out.println("");
+		System.out.println("\t\t  ┌───────────────────────┐");
+		System.out.println("\t\t  │ SUPPRIMER UNE PROMOS  │");
+		System.out.println("\t\t  └───────────────────────┘\n");
+		
+		System.out.print("\t\t    ID : ");
+		int id = sc.nextInt();
+		
+		//if(super.checkId()){
+				
+		String query = "DELETE FROM promo WHERE pro_id=?;"; 
+		    
+		try {
+			PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			prepare.setInt(1, id);
+			prepare.execute();
+			ResultSet result = prepare.getResultSet();
+							
+			System.out.println("Supprimer !");
+		}
+			
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		//}
+	return res;
+	
 	}
 
 

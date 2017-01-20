@@ -52,6 +52,33 @@ public abstract class Membres {
 		
 		return true;
 	}
+	
+public boolean checkId() {
+		
+		String query = "SELECT * FROM membres WHERE mem_id=?";
+		
+		int id = 0;
+		
+		try {
+			PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			prepare.setInt(1, id);
+						
+			ResultSet result = prepare.executeQuery();
+				
+			//───── Utilisateur identifié ─────────────────────────────────────────────────
+				
+			if(result.first())	{
+				System.out.println("\n l'id est n'existe pas !\n");
+				return false;
+			}
+		} 
+		
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
 
 //───── Getter / Setter ──────────────────────────────────────────
 				
