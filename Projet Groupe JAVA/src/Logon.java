@@ -1,33 +1,31 @@
 
 public abstract class Logon {
 
-//==== Attributs ================================================
+//───── Attributs ────────────────────────────────────────────────
 	
-	protected int id;
-	protected String login;
+	protected int com_id;
+	protected String comp_login;
 
-//==== Constructeurs ============================================	
-
-	
-	
+//───── Constructeurs ────────────────────────────────────────────	
+		
 	public Logon(){ 
 	}
 
-//==== get /set =================================================
-	public int getId() {
-		return id;
+//───── Getter / Setter ──────────────────────────────────────────
+	
+		public int getCom_id() {
+		return com_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCom_id(int com_id) {
+		this.com_id = com_id;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getComp_login() {
+		return comp_login;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setComp_login(String comp_login) {
+		this.comp_login = comp_login;
 	}
-
 }
