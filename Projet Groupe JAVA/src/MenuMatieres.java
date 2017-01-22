@@ -11,16 +11,15 @@ public class MenuMatieres extends Matieres {
 	
 	public MenuMatieres(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
-		}
+		this.com_id = com_id;
+		this.dro_id = dro_id;
+	}
 	
 	public MenuMatieres() {
-		}
+	}
 		
 //───── Methodes ─────────────────────────────────────────────────	
 	
-
 	public void menuFull() {
 		
 		if(dro_id == 1){
@@ -102,10 +101,8 @@ public class MenuMatieres extends Matieres {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
-		return choix;
-	
+	while(!choixValide);
+	return choix;
 	}
 	
 }

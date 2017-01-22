@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class MenuCompteCreer extends Utilisateur {
 	
 //───── Attributs ────────────────────────────────────────────────
@@ -12,9 +11,9 @@ public class MenuCompteCreer extends Utilisateur {
 	
 	public MenuCompteCreer(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
-			menuFull();
+		this.com_id = com_id;
+		this.dro_id = dro_id;
+		menuFull();
 		}
 		
 //───── Methodes ─────────────────────────────────────────────────	
@@ -59,32 +58,31 @@ public class MenuCompteCreer extends Utilisateur {
 			System.out.println("           └────────────────────────────────────┘");
 	
 			choix = menuEntrer(7, "\n                   Choisir une option : ");
-			
 			System.out.println("");
 			
 			switch(choix){
 				
 				case 1:
 					Administrateur obj2121 = new Administrateur();
-					MenuCompte obj1 = new MenuCompte();
+					MenuCompte obj1 = new MenuCompte(com_id,dro_id);
 					obj1.menuFull();
 					break;
 							
 				case 2:
 					Responsable obj2122 = new Responsable();
-					MenuCompte obj2 = new MenuCompte();
+					MenuCompte obj2 = new MenuCompte(com_id,dro_id);
 					obj2.menuFull();
 					break;
 							
 				case 3: 
 					Formateur obj2123 = new Formateur();
-					MenuCompte obj3 = new MenuCompte();
+					MenuCompte obj3 = new MenuCompte(com_id,dro_id);
 					obj3.menuFull();
 					break;
 					
 				case 4: 
 					Etudiant obj2124 = new Etudiant();
-					MenuCompte obj4 = new MenuCompte();
+					MenuCompte obj4 = new MenuCompte(com_id,dro_id);
 					obj4.menuFull();
 					break;
 										
@@ -92,7 +90,6 @@ public class MenuCompteCreer extends Utilisateur {
 					MenuCompte obj = new MenuCompte(com_id,dro_id);
 					obj.menuFull();
 					break;
-		
 			}
 		}	
 	}
@@ -116,10 +113,8 @@ public class MenuCompteCreer extends Utilisateur {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
+		while(!choixValide);
 		return choix;
-	
 	}
 	
 }

@@ -21,9 +21,8 @@ public class MenuPromos extends Promos {
 		
 //───── Methodes ─────────────────────────────────────────────────	
 	
-
 	public void menuFull() {
-		
+
 		if(dro_id == 1){
 			int choix;
 			
@@ -103,10 +102,8 @@ public class MenuPromos extends Promos {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
-		return choix;
-	
+	while(!choixValide);
+	return choix;
 	}
 	
 }

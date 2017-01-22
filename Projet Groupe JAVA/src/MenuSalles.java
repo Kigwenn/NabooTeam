@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class MenuSalles extends Salles {
@@ -12,15 +11,14 @@ public class MenuSalles extends Salles {
 	
 	public MenuSalles(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
+		this.com_id = com_id;
+		this.dro_id = dro_id;
 	}
 	
 	public MenuSalles() {
 	}
 		
 //───── Methodes ─────────────────────────────────────────────────	
-	
 
 	public void menuFull() {
 		
@@ -72,6 +70,7 @@ public class MenuSalles extends Salles {
 					break;
 							
 				case 3: 
+					
 					super.listeSalles();
 					super.supprSalles();
 					menuFull();
@@ -103,10 +102,8 @@ public class MenuSalles extends Salles {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
-		return choix;
+	while(!choixValide);
+	return choix;
 	
 	}
-	
 }

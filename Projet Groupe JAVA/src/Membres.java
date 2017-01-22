@@ -53,7 +53,7 @@ public abstract class Membres {
 		return true;
 	}
 	
-public boolean checkId() {
+	public boolean checkId() {
 		
 		String query = "SELECT * FROM membres WHERE mem_id=?";
 		

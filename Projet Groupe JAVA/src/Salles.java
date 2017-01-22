@@ -3,7 +3,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
 public class Salles {
 	
 //───── Attributs ────────────────────────────────────────────────
@@ -67,7 +66,6 @@ public class Salles {
 	    	PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
 	    	prepare.execute();
 			ResultSet result = prepare.getResultSet();
-		    //ResultSet result = state.executeQuery(query);
 			    
 		    System.out.println("         ┌───────┬───────────────┐" );
 		    System.out.println("         │ id    │ Nom		 │" );

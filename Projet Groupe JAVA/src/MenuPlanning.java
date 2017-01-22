@@ -1,7 +1,6 @@
-
 import java.util.Scanner;
 
-public class MenuEnseigner extends Enseigner {
+public class MenuPlanning extends Reserver {
 	
 //───── Attributs ────────────────────────────────────────────────
 		
@@ -10,19 +9,17 @@ public class MenuEnseigner extends Enseigner {
 	
 //───── Constructeurs ────────────────────────────────────────────
 	
-	public MenuEnseigner(int com_id, int dro_id) {
+	public MenuPlanning(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
-		//	menuFull();
-		}
+		this.com_id = com_id;
+		this.dro_id = dro_id;
+	}
 	
-	public MenuEnseigner() {
-		}
+	public MenuPlanning() {
+	}
 		
 //───── Methodes ─────────────────────────────────────────────────	
 	
-
 	public void menuFull() {
 		
 		if(dro_id == 1){
@@ -32,22 +29,22 @@ public class MenuEnseigner extends Enseigner {
 			System.out.println("           ┌────────────────────────────────────┐");
 			System.out.println("           │        Projet Planning IMIE        │");
 			System.out.println("           ├───                               ──┤");
-			System.out.println("           │            MENU Enseigner          │");
+			System.out.println("           │              MENU PLANNING         │");
 			System.out.println("           ├──────                        ──────┤");
 			System.out.println("           │                                    │");			
 
 			if (dro_id == 1){
-				System.out.println("           │  1) - Liste des Enseignementqs     │");
+				System.out.println("           │  1) - Planning                     │");
 				System.out.println("           │                                    │");
 			}
 			
 			if (dro_id == 1){
-				System.out.println("           │  2) - Créer un c               │");
+				System.out.println("           │  2) - Creer une Reservation        │");
 				System.out.println("           │                                    │");
 			}
 			
 			if (dro_id == 1){
-				System.out.println("           │  3) - Supprimer une cour           │");
+				System.out.println("           │  3) - Supprimer une Reservation    │");
 				System.out.println("           │                                    │");
 			}
 			
@@ -62,24 +59,29 @@ public class MenuEnseigner extends Enseigner {
 			switch(choix){
 				
 				case 1:
-					super.listeCours();
+					super.listeReservations();
 					menuFull();
 					break;
 
 				case 2:
-					
-					super.createCours();
-					menuFull();
+					Promos obj162 = new Promos();
+					obj162.listePromos();
+					Cours obj161 = new Cours();
+					obj161.listeCours();
+					Salles obj163 = new Salles(com_id,dro_id);
+					obj163.listeSalles();
+					super.createReservations();
+					Menu obj = new Menu(com_id,dro_id);
 					break;
 							
 				case 3: 
-					super.listeCours();
-					super.supprCours();
+					super.listeReservations();
+					super.supprReservations();
 					menuFull();
 					break;
 										
 				case 0: 
-					Menu obj = new Menu(com_id,dro_id);
+					Menu obj1 = new Menu(com_id,dro_id);
 					break;
 			}
 		}	
@@ -104,13 +106,8 @@ public class MenuEnseigner extends Enseigner {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
-		return choix;
-	
+		
+	while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
+	return choix;
 	}
-	
-}	
-	
-	
-
+}

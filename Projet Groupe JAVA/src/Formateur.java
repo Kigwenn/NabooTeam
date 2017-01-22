@@ -3,7 +3,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
 public class Formateur extends Membres {
 
 //───── Attributs ────────────────────────────────────────────────		
@@ -90,5 +89,12 @@ public class Formateur extends Membres {
 	}
 		
 //───── Getter / Setter ──────────────────────────────────────────
+	
+	public int getDroits() {
+		return droits;
+	}
 
+	public void setDroits(int droits) {
+		this.droits = droits;
+	}
 }

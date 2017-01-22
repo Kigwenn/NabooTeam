@@ -128,6 +128,5 @@ public class Matieres {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 }
 

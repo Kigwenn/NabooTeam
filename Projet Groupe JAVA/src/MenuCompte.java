@@ -12,13 +12,12 @@ public class MenuCompte extends Utilisateur {
 	
 	public MenuCompte(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
-			//menuFull();
-		}
+		this.com_id = com_id;
+		this.dro_id = dro_id;
+	}
 	
 	public MenuCompte() {
-		}
+	}
 		
 //───── Methodes ─────────────────────────────────────────────────	
 	
@@ -68,13 +67,15 @@ public class MenuCompte extends Utilisateur {
 					break;
 
 				case 2:
-					
 					MenuCompteCreer obj112 = new MenuCompteCreer(com_id,dro_id);
-
+					MenuCompte obj1 = new MenuCompte(com_id,dro_id);
+					obj1.menuFull();
 					break;
 							
 				case 3: 
 					MenuCompteSuppression obj113 = new MenuCompteSuppression(com_id,dro_id);
+					MenuCompte obj2 = new MenuCompte(com_id,dro_id);
+					obj2.menuFull();
 					break;
 										
 				case 0: 
@@ -104,10 +105,7 @@ public class MenuCompte extends Utilisateur {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
+		while(!choixValide);
 		return choix;
-	
 	}
-	
 }

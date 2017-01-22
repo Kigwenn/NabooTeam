@@ -44,8 +44,7 @@ public class Utilisateur extends Membres {
 			prepare.setString(1, login);
 			
 			ResultSet result = prepare.executeQuery();
-			
-			//Si login existe
+
 			if(result.first()) {
 				
 				PreparedStatement prepare2 = LinkBdd.getInstance().prepareStatement(query2, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -54,17 +53,10 @@ public class Utilisateur extends Membres {
 				
 				ResultSet result2 = prepare2.executeQuery();
 				
-				//user identifie
 				if(result2.first())	{
 					
-					//System.out.println("\n Login OK !\n");
-					
-					//On remplit nos attibuts
 					com_id = result2.getInt("com_id");
 					dro_id = result2.getInt("dro_id");
-					//System.out.println("com_id :"+com_id);
-					//System.out.println("dro_id :"+dro_id);
-					
 					String query3 = "SELECT * FROM membres WHERE com_id="+com_id+";";
 					
 					PreparedStatement prepare3 = LinkBdd.getInstance().prepareStatement(query3, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -76,15 +68,13 @@ public class Utilisateur extends Membres {
 							nom = result3.getString("mem_nom");
 						if(result3.getString("mem_prenom") != null)
 							prenom = result3.getString("mem_prenom");
-						System.out.println("\nIdentification de "+nom+" "+prenom+" Ok !\n");
+						System.out.println("\nIdentification de "+nom+" "+prenom+" acces Niv: "+dro_id+"\n");
 					}
-				
 					Menu objMenu = new Menu(com_id,dro_id);
 					
 				return true;
 				}
 					
-				//Mot de passe non valide !
 				else
 				{
 					System.out.println("\nMot de passe est invalide !\n");
@@ -115,8 +105,7 @@ public class Utilisateur extends Membres {
 	    	PreparedStatement prepare = LinkBdd.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);	
 	    	prepare.execute();
 			ResultSet result = prepare.getResultSet();
-		    //ResultSet result = state.executeQuery(query);
-			    
+		    
 		    System.out.println("         ┌───────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────┬───────────────┐" );
 		    System.out.println("         │ id    │ Nom		 │ Prenom        │ Adresse	 │ Code post.    │ Ville         │ tel.          │ Droits        │" );
 		    System.out.println("┌────────┼───────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤" );

@@ -6,17 +6,17 @@ public class mainProjet {
 		
 		if(LinkBdd.getInstance() != null){
 			menuPrincipal();
-		}	
+		}
 		else{
 			System.out.println("La connexion à la BDD a échoué ! Aurevoir !");
 		}
 	}
 			
 	public static void menuPrincipal() {
+		
 		Scanner sc = new Scanner(System.in);
 		int choix;
 		do {	
-
 			System.out.println("");
 			System.out.println("           ┌────────────────────────────────────┐");
 			System.out.println("           │        Projet Planning IMIE        │");
@@ -33,8 +33,6 @@ public class mainProjet {
 			choix = menuEntrer(3, "\n                   Choisir une option : ");
 			System.out.println("");
 			
-			
-			
 			switch(choix){
 					
 				case 1:
@@ -46,16 +44,13 @@ public class mainProjet {
 					break;
 							
 				case 0: 
-					break;
-					
+					break;			
 			} 
 		}				
 				
 		while(choix != 0);
-				
 		System.out.println("Bye bye !");
 	}
-		
 
 	public static int menuEntrer(int n, String message){
 		
@@ -67,19 +62,15 @@ public class mainProjet {
 		do{
 			System.out.print(message);
 			choix = sc.nextInt();
-					
 			if(choix >= 0 && choix <=n){
 				choixValide = true;
 			}
-				
 			else {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
+		while(!choixValide);
 	
 		return choix;
-	
 	}
-	
 }

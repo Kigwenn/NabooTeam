@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class MenuCours extends Cours {
@@ -12,16 +11,14 @@ public class MenuCours extends Cours {
 	
 	public MenuCours(int com_id, int dro_id) {
 		super(com_id, dro_id);
-			this.com_id = com_id;
-			this.dro_id = dro_id;
-		//	menuFull();
+		this.com_id = com_id;
+		this.dro_id = dro_id;
 		}
 	
 	public MenuCours() {
 		}
 		
 //───── Methodes ─────────────────────────────────────────────────	
-	
 
 	public void menuFull() {
 		
@@ -67,10 +64,6 @@ public class MenuCours extends Cours {
 					break;
 
 				case 2:
-					Matieres obj2 = new Matieres();
-					obj2.listeMatieres();
-					Formateur obj3 = new Formateur();
-					obj3.f();
 					super.createCours();
 					menuFull();
 					break;
@@ -107,10 +100,7 @@ public class MenuCours extends Cours {
 				System.out.print("Attention, vous devez saisir un entier entre 1 et " + n + ".");
 			}
 		}
-		while(!choixValide); //tant que le choix n'est pas valide ou qu'il n'a pas demander a quitter
-	
+		while(!choixValide);
 		return choix;
-	
 	}
-	
 }

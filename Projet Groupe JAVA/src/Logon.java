@@ -11,7 +11,6 @@ public abstract class Logon {
 	public Logon(){ 
 	}
 
-
 //───── Getter / Setter ──────────────────────────────────────────
 	
 		public int getCom_id() {
